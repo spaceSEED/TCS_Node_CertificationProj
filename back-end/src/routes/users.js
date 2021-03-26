@@ -40,17 +40,6 @@ router.get('/me', auth, async (req, res) => {
   }
 })
 
-/* Get user by ID */
-router.get('/:id', async (req, res) => {
-  try {
-    const id = req.params.id;
-    const user = await User.findById(id);
-    res.status(200).send(user);
-  } catch (err) {
-    res.status(400).send(err);
-  }
-})
-
 
 /* Get all users (for dev purposes) */
 router.get('/', auth, async (req, res) => {
