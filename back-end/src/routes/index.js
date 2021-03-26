@@ -15,6 +15,10 @@ router.get('/edit-news', function(req, res, next) {
   res.render('edit-news', { page:2 });
 });
 
+router.get('/sportform', function(req, res, next) {
+  res.render('sportform', { page:3 });
+});
+
 router.get('/chat', function(req, res, next) {
   res.render('chat', { title: 'Chat' });
 });
