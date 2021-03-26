@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SportService } from './service/sport.service';
+import { ISport } from './sport';
 
 @Component({
   selector: 'app-sport',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sport.component.css']
 })
 export class SportComponent implements OnInit {
-
-  constructor() { }
+  newsList : ISport[] = []
+  constructor(private sportService : SportService) { }
 
   ngOnInit(): void {
+    this.newsList = this.sportService.getSportData()
   }
 
+  redirect(){
+    window.open("https://www.foxnews.com/sports", "_blank")
+  }
 }

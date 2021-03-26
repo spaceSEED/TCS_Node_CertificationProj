@@ -1,9 +1,34 @@
-<div class='card-container'>
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor='let news of newsList'>
-    <div class="card-header">{{news.title}}</div>
-    <div class="card-body">
-        <h5 class="card-title">{{news.date}}</h5>
-        <p class="card-text">{{news.description}}</p>
+<div class='container mt-5'>
+    <div class='card-container row row-cols-1 row-cols-md-3'>
+        <div class="col mb-4" *ngFor='let news of newsList'>
+            <!-- <div class="card border-dark" style="max-width: 18rem;">
+                    <div class="card-header text-white bg-dark mb-3 text-center pt-3 px-3 pt-md-5 px-md-5 ">
+                        <div class='my-3 py-3'>
+                            {{news.title}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{news.date}}</h5>
+                        <p class="card-text">{{news.description}}</p>
+                    </div>
+                </div>
+                <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                    <div class="my-3 py-3">
+                      <h2 class="display-5">Another headline</h2>
+                      <p class="lead">And an even wittier subheading.</p>
+                    </div>
+                </div> -->
+            <div class="">
+                <div class="bg-dark mr-md-3 pt-3  pt-md-5 text-center text-white overflow-hidden">
+                    <div class="">
+                        <h2 class="display-5">{{news.title}}</h2>
+                        <p class="lead">{{news.date}}</p>
+                    </div>
+                    <div class="text-area bg-light box-shadow mx-auto">
+                        <p style='color: black;'>{{news.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>
