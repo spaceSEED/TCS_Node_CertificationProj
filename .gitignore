@@ -5,3 +5,4 @@ front-end/node_modules
 #Environment Variables
 back-end/config
 front-end/config
+frontend/src/environments

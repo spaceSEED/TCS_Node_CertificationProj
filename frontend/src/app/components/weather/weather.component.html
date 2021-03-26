@@ -1,1 +1,14 @@
-<p>weather works!</p>
+<div class="card text-center">
+    <div class="card-header">
+        Current Weather
+    </div>
+    <div class="card-body" *ngIf=" city != '' ">
+        <h5 class="card-title">{{city}}</h5>
+        <p class="card-text">{{temperature}} F</p>
+        <p class="card-text">{{weather}}</p>
+        <img src={{weatherIcon}}>
+    </div>
+    <div class="card-body" *ngIf="city == '' ">
+        <h3>Turn on location to check current weather</h3>
+    </div>
+</div>
