@@ -23,6 +23,10 @@
         nickName: document.getElementById("nickNameInput").value,
         chatMsg: document.getElementById("chatInput").value
       });
+      document.getElementById("chatInput").value="";
+      socket.emit('typeoff',{
+        nickName: document.getElementById("nickNameInput").value,
+      });
     });
 
     socket.on("newChat", (data)=>{
@@ -41,13 +45,21 @@
 
     $("#chatInput").on("keyup", ()=>{
       //console.log('typingoff');
+      if(document.getElementById("chatInput").value==""){
       socket.emit('typeoff',{
         nickName: document.getElementById("nickNameInput").value,
       });
+    }else{
+      setTimeout(function(){
+        socket.emit('typeoff',{
+          nickName: document.getElementById("nickNameInput").value,
+        });
+      },1000)
+    }
     });
 
 
-    socket.on('typing',(data)=>{//There are still some bugs here
+    socket.on('typing',(data)=>{
       var msg=data.nickName+" is typing..."
       if($("#chatMsgThread").val().indexOf(msg)<0){
       $("#chatMsgThread").val($("#chatMsgThread").val()+ msg + "\n");
@@ -56,9 +68,11 @@
     socket.on('typing_off',(data)=>{
       var msg=$("#chatMsgThread").val();
       var s=msg.indexOf(data.nickName+" is typing...");
-      var e=1+msg.indexOf('\n',s);
-      msg=msg.substring(0,s)+msg.substring(e);
-      $("#chatMsgThread").val(msg);
+      if(s>=0){
+        var e=1+msg.indexOf('\n',s);
+        msg=msg.substring(0,s)+msg.substring(e);
+        $("#chatMsgThread").val(msg); 
+      }
     });
 
   </script>
