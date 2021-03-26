@@ -24,4 +24,3 @@ router.get('/chat', function(req, res, next) {
 });
 
 module.exports = router;
-
