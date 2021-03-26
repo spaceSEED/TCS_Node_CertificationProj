@@ -1,5 +1,6 @@
 var express = require('express');
 const User = require('../models/user')
+const auth = require('../middleware/auth')
 var router = express.Router();
 
 /* Post user to DB */
@@ -8,40 +9,56 @@ router.post('/', async (req, res) => {
 
   try {
     await user.save();
-    return res.status(201).json(user);
-  } catch (e) {
-    return res.status(400).send(e);
+    const token = await user.generateAuthToken()
+    return res.status(201).send({ user, token });
+  } catch (err) {
+    return res.status(400).send(err);
   }
 });
+
+
+
+/* Login user */
+router.post('/login', async (req, res) => {
+  try {
+    const user = await User.findByCredentials(req.body.email, req.body.password);
+    const token = await user.generateAuthToken()
+    res.status(200).cookie('Authorization', token).send()
+  } catch (err) {
+    res.status(500).send(err);
+  }
+})
+
+
+
+/* Get user information */
+router.get('/me', auth, async (req, res) => {
+  try {
+    res.status(200).send(req.user)
+  } catch (err) {
+    res.status(400).send(err)
+  }
+})
 
 /* Get user by ID */
 router.get('/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const user = await User.findById(id)
-    res.status(200).json(user)
-  } catch (e) {
-    res.status(400).send(e)
+    const user = await User.findById(id);
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(400).send(err);
   }
 })
 
-/* Login user */
-router.post('/login', async (req, res) => {
-  try {
-    const user = await User.findByCredentials(req.body.email, req.body.password)
-    res.status(200).json(user)
-  } catch (e) {
-    res.status(500).send(e)
-  }
-})
 
 /* Get all users (for dev purposes) */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const users = await User.find({});
-    return res.status(200).json(users)
-  } catch (e) {
-    return res.status(400).send(e);
+    return res.status(200).send(users);
+  } catch (err) {
+    return res.status(400).send(err);
   }
 })
 
