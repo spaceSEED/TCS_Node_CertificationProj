@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { NewsComponent } from './components/news/news.component';
-import { GallaryComponent } from './components/gallary/gallary.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 import { ChatboxComponent } from './components/chatbox/chatbox.component';
 import { SportComponent } from './components/sport/sport.component';
 import { AboutComponent } from './components/about/about.component';
@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http'
     FooterComponent,
     WeatherComponent,
     NewsComponent,
-    GallaryComponent,
+    GalleryComponent,
     ChatboxComponent,
     SportComponent,
     AboutComponent,
