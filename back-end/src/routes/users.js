@@ -16,6 +16,15 @@ router.post('/', async (req, res) => {
   }
 });
 
+// GET login //
+router.get('/login', async (req, res) => {
+  res.render('login', { page: 5 });
+});
+
+// GET signup //
+router.get('/signup', async (req, res) => {
+  res.render('signup', { page: 6 });
+});
 
 /* Login user */
 router.post('/login', async (req, res) => {
