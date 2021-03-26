@@ -1,5 +1,5 @@
 
-  <h1>Group Chat</h1>
+  <!-- <h1>Group Chat</h1>
   <textarea id="chatMsgThread" placeholder="Chat will appear here..." 
   cols="100" rows="25"></textarea>
   <br>
@@ -12,7 +12,24 @@
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="/socket.io/socket.io.js"></script> -->
+
+<button class="open-button" (click)="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <form class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea id="chatMsgThread" placeholder="Chat will appear here..." ></textarea>
+    <input type="text" id="nickNameInput" placeholder="Enter Nick Name">
+    <textarea placeholder="Type message.." id="chatInput" (keydown)="type()" (keyup)="typeoff()" name="msg" 
+      style='min-height: 100px' required></textarea>
+    <button type="submit" class="btn" (click)="sendChat()">Send</button>
+    <button type="button" class="btn cancel" (click)="closeForm()" id="sendChatBtn">Close</button>
+  </form>
+</div>
+
   <!--script>
     console.log('Script init');
     var socket = io("http://localhost:3000");
