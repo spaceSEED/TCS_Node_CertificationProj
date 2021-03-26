@@ -9,6 +9,10 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { NewsComponent } from './components/news/news.component';
 import { GallaryComponent } from './components/gallary/gallary.component';
 import { ChatboxComponent } from './components/chatbox/chatbox.component';
+import { SportComponent } from './components/sport/sport.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { ChatboxComponent } from './components/chatbox/chatbox.component';
     WeatherComponent,
     NewsComponent,
     GallaryComponent,
-    ChatboxComponent
+    ChatboxComponent,
+    SportComponent,
+    AboutComponent,
+    ContactComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
