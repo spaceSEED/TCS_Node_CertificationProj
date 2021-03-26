@@ -13,18 +13,17 @@ router.get('/', async (req,res,next) =>{
 });
 
 router.post('/', async (req,res,next) =>{
-    var o={
+    var o = {
         isSports:true,
         ...req.body
     };
-    try{
+    try {
         const n = new News(o);
-        let news= await n.save();
+        let news = await n.save();
         res.status(200).send("Success");
-    }catch(e){
+    } catch(e) {
         res.status(400).send(e);
     }
-
 });
 
 module.exports=router;

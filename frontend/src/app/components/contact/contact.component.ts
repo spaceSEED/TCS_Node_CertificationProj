@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  contactForm: any;
+
+  isSaved = false;
+
+
+  constructor(private fb: FormBuilder) {
+    this.contactForm = this.fb.group({
+
+      // have the input element equivalent on the ts side
+      name: new FormControl('', Validators.required), // step #5: form validation
+      email: new FormControl('', [Validators.required, Validators.email]),
+      msg: new FormControl('',  [Validators.required, Validators.minLength(10)]),
+    }
+    );
+    
+   }
 
   ngOnInit(): void {
   }
 
+  handleContactForm() {
+    console.log(this.contactForm); // reactive form state
+
+    // send above data to the service
+    // get the res from the service
+    // upon getting successful status display the 
+    this.isSaved = true;
+  }
 }
