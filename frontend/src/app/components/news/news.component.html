@@ -1,1 +1,9 @@
-<p>news works!</p>
+<div class='card-container'>
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor='let news of newsList'>
+    <div class="card-header">{{news.title}}</div>
+    <div class="card-body">
+        <h5 class="card-title">{{news.date}}</h5>
+        <p class="card-text">{{news.description}}</p>
+    </div>
+</div>
+</div>

@@ -7,12 +7,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { NewsComponent } from './components/news/news.component';
-import { GallaryComponent } from './components/gallary/gallary.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 import { ChatboxComponent } from './components/chatbox/chatbox.component';
 import { SportComponent } from './components/sport/sport.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     WeatherComponent,
     NewsComponent,
-    GallaryComponent,
+    GalleryComponent,
     ChatboxComponent,
     SportComponent,
     AboutComponent,
@@ -30,7 +32,10 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
