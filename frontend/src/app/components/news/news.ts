@@ -1,5 +1,5 @@
 export interface INews{
     title: String,
-    date: String,
+    pub_date: String,
     description: String
 }
