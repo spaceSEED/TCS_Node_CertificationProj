@@ -15,13 +15,13 @@ require('./db/mongoose')
 var app = express();
 
 //CORS ["http://localhost:3000","http://localhost:4200"]
-//app.use(cors({origin:true}));
-app.use(function(req, res, next) {
+app.use(cors({origin:true}));
+/*app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-});
+});*/
 
 
 // view engine setup

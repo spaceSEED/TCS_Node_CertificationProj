@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', async (req,res,next) =>{
     try{
-        let news= await News.find({isSports:true}).sort({pub_date:-1});
+        let news = await News.find({isSports:true}).sort({pub_date:-1});
         res.json(news);
     }catch(e){
         res.status(400).send(e);
