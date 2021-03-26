@@ -5,7 +5,7 @@ const auth = async (req, res, next) => {
    try {
       const token = req.cookies.Authorization.replace('Bearer ', '');
 
-      const decoded = jwt.verify(token, 'thisisasecret');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       // find user with correct ID who has proper authentication token
       const user = await User.findOne({ _id: decoded._id, 'tokens.token': token });

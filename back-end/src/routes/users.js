@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
 });
 
 
-
 /* Login user */
 router.post('/login', async (req, res) => {
   try {
@@ -28,6 +27,7 @@ router.post('/login', async (req, res) => {
     res.status(500).send(err);
   }
 })
+
 
 //log out
 router.post('/logout', auth, async (req, res) => {
@@ -49,7 +49,6 @@ router.post('/logout', auth, async (req, res) => {
 })
 
 
-
 /* Get user information */
 router.get('/me', auth, async (req, res) => {
   try {
@@ -58,8 +57,6 @@ router.get('/me', auth, async (req, res) => {
     res.status(400).send(err)
   }
 })
-
-
 
 
 /* Get all users (for dev purposes) */

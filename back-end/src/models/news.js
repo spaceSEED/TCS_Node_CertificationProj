@@ -1,7 +1,6 @@
-const mongoose=require('../db/mongoose');
-var autoIncrement = require('mongoose-auto-increment');
+const mongoose = require('../db/mongoose');
 
-const News=new mongoose.Schema({
+const News = new mongoose.Schema({
     title:String,
     description:String,
     url:String,
@@ -10,7 +9,3 @@ const News=new mongoose.Schema({
     isSports:Boolean,
     id:{type:Number,unique:true}
 });
-autoIncrement.initialize(mongoose.connection);
-
-News.plugin(autoIncrement.plugin,{model:"News",field:"id",startAt:1});
-module.exports=mongoose.model('News',News);
