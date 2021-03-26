@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { INews } from './news'
-@Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
-})
-export class NewsComponent implements OnInit {
-  newsList : INews[] = []
-  
-  constructor() { }
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-  ngOnInit(): void {
-    this.newsList = [
+@Injectable({
+  providedIn: 'root'
+})
+export class NewsService {
+
+  constructor(private http: HttpClient) { }
+
+  getnews(){
+    const data = [
       {
         title: "title1",
         date: '12/2/3333',
@@ -28,6 +26,10 @@ export class NewsComponent implements OnInit {
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa  dsadsa  dsa ds ad sadas'
       }
     ]
+    return data
   }
 
+  getArticle(){
+    
+  }
 }

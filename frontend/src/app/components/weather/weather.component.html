@@ -21,9 +21,9 @@
         Current Weather
     </div> -->
     <div class="card-body" *ngIf=" city != '' ">
-        <h5 class="card-title">{{city}}</h5>
-        <p class="card-text">{{temperature}} F</p>
-        <p class="card-text">{{weather}}</p>
+        <h3 class="card-title">{{city}}</h3>
+        <h3 class="card-text">{{temperature}} F</h3>
+        <h3 class="card-text">{{weather}}</h3>
         <img src={{weatherIcon}}>
     </div>
     <div class="card-body" *ngIf="city == '' ">
