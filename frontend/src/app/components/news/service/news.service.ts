@@ -11,20 +11,20 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   getnews(){
-    const data = [
+    const data : INews[]= [
       {
         title: "title1",
-        date: '12/2/3333',
+        pub_date: '12/2/3333',
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k'
       },
       {
         title: "title2",
-        date: '12/2/133',
+        pub_date: '12/2/133',
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa dsadsa'
       },
       {
         title: "title3",
-        date: '12/2/4433',
+        pub_date: '12/2/4433',
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa  dsadsa  dsa ds ad sadas'
       }
     ]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsServiceService } from 'src/app/services/news-service.service';
+import { IArticle } from './article';
 import { INews } from './news'
+import { NewsService } from './service/news.service';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -8,32 +10,17 @@ import { INews } from './news'
 })
 export class NewsComponent implements OnInit {
   newsList : INews[] = []
-<<<<<<< HEAD
-  
-  constructor() { }
-=======
-
-  constructor(private serv:NewsServiceService) { }
->>>>>>> d31f530144ac2e92c0fe140e34f01cdf6fe65d4b
+  article : IArticle= {
+    title: '',
+    author: '',
+    date: '',
+    description: ''
+  }
+  constructor(private serv:NewsServiceService, private newsService : NewsService) { }
 
   ngOnInit(): void {
-    this.newsList = [
-      {
-        title: "title1",
-        pub_date: '12/2/3333',
-        description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k'
-      },
-      {
-        title: "title2",
-        pub_date: '12/2/133',
-        description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa dsadsa'
-      },
-      {
-        title: "title3",
-        pub_date: '12/2/4433',
-        description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa  dsadsa  dsa ds ad sadas'
-      }
-    ];
+    this.newsList = this.newsService.getnews()
+    this.article = this.newsService.getArticle()
     this.getNews();
   }
 

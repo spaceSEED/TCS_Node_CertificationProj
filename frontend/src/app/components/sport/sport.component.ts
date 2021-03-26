@@ -13,6 +13,7 @@ export class SportComponent implements OnInit {
 
   ngOnInit(): void {
     this.sportService.getSportData().subscribe((res:any)=>{
+      console.log(res)
       this.newsList=res;
     });
   }

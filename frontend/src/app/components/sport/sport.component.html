@@ -13,7 +13,7 @@
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col mb-4" *ngFor='let data of newsList' (click)="redirect()">
             <div class="card">
-                <img src={{data.image_url}} class="card-img-top" alt="...">
+                <img src={{data.img_url}} class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{data.title}}</h5>
                     <p class="card-text">{{data.description}}</p>
