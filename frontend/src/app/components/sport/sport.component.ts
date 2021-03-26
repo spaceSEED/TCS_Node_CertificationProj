@@ -12,7 +12,9 @@ export class SportComponent implements OnInit {
   constructor(private sportService : SportService) { }
 
   ngOnInit(): void {
-    this.newsList = this.sportService.getSportData()
+    this.sportService.getSportData().subscribe((res:any)=>{
+      this.newsList=res;
+    });
   }
 
   redirect(){

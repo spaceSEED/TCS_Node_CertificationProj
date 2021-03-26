@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsServiceService } from 'src/app/services/news-service.service';
 import { INews } from './news'
 @Component({
   selector: 'app-news',
@@ -8,26 +9,35 @@ import { INews } from './news'
 export class NewsComponent implements OnInit {
   newsList : INews[] = []
 
-  constructor() { }
+  constructor(private serv:NewsServiceService) { }
 
   ngOnInit(): void {
     this.newsList = [
       {
         title: "title1",
-        date: '12/2/3333',
+        pub_date: '12/2/3333',
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k'
       },
       {
         title: "title2",
-        date: '12/2/133',
+        pub_date: '12/2/133',
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa dsadsa'
       },
       {
         title: "title3",
-        date: '12/2/4433',
+        pub_date: '12/2/4433',
         description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa  dsadsa  dsa ds ad sadas'
       }
-    ]
+    ];
+    this.getNews();
+  }
+
+  getNews(){
+    this.serv.getNews().subscribe((res:any)=>{
+      this.newsList[0]=res[0];
+      this.newsList[1]=res[1];
+      this.newsList[2]=res[2];
+    });
   }
 
 }
