@@ -2,6 +2,7 @@ var express = require('express');
 const { render } = require('../app');
 var News=require('../models/news');
 var router = express.Router();
+const auth = require('../middleware/auth')
 
 //returns all normal news
 router.get('/', async (req,res,next) =>{
@@ -27,7 +28,7 @@ router.get('/all', async (req,res,next) =>{
 });
 
 //DELETE
-router.get('/delete/:id',async (req,res)=>{
+router.get('/delete/:id', auth, async (req,res)=>{
     let id=req.params.id;
     try{
         await (await News.findOne({_id:id})).delete();
@@ -38,7 +39,7 @@ router.get('/delete/:id',async (req,res)=>{
 });
 
 //Edit:PUT and Add:POST
-router.post('/', async (req,res,next) =>{
+router.post('/', auth, async (req,res,next) =>{
     console.log("recieved");
     if(req.body._method=="PUT"){
         console.log("PUT");

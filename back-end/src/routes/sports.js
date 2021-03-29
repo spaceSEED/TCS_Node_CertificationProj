@@ -1,6 +1,7 @@
 var express = require('express');
 var News=require('../models/news');
 var router = express.Router();
+const auth = require('../middleware/auth')
 
 router.get('/', async (req,res,next) =>{
     try{
@@ -12,7 +13,7 @@ router.get('/', async (req,res,next) =>{
 
 });
 
-router.post('/', async (req,res,next) =>{
+router.post('/', auth, async (req,res,next) =>{
     var o = {
         isSports:true,
         ...req.body
