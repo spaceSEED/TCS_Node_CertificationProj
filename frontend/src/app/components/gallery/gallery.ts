@@ -1,5 +1,5 @@
 export interface IGallery{
-    imgUrl: String,
+    img_url: String,
     title: String,
     description: String
     active: boolean

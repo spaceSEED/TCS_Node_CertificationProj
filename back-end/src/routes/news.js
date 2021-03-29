@@ -5,12 +5,24 @@ var router = express.Router();
 const auth = require('../middleware/auth')
 
 //returns all normal news
-router.get('/', async (req, res, next) => {
-    try {
-        let news = await News.find({ isSports: false }).sort({ pub_date: -1 });
-        res.render('edit-news', { page: 2, data: news, token: req.headers.cookie });
-        //res.status(200).json(news);
-    } catch (e) {
+
+router.get('/', async (req,res,next) =>{
+    try{
+        let news= await News.find({isSports:false}).sort({pub_date:-1});
+        //res.render('edit-news', {page:2,data: news, token:req.headers.cookie });
+        res.status(200).json(news);
+    }catch(e){
+        res.status(400).json(e);
+    }
+
+});
+
+router.get('/img', async (req,res,next) =>{
+    try{
+        let news= await News.find({isSports:false, img_url:{$exists:true}}).sort({pub_date:-1});
+        //res.render('edit-news', {page:2,data: news, token:req.headers.cookie });
+        res.status(200).json(news);
+    }catch(e){
         res.status(400).json(e);
     }
 
