@@ -4,3 +4,19 @@
     padding-left: 10px;
     padding-top: 10px;
 }
+
+.article{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.article-header{
+    justify-content: center;
+}
+.article-body{
+    justify-content: flex-start;
+}
+
+.article-description{
+    font-size: 20px;
+}

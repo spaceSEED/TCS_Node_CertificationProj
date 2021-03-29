@@ -25,7 +25,7 @@ router.get('/all', async (req,res,next) =>{
 router.delete('/:id',async (req,res)=>{
     let id=req.params.id;
     try{
-        await (await News.findOne({id:id})).delete();
+        await (await News.findOne({_id:id})).delete();
         res.status(200).send("Deleted Successfully");
     }catch(e){
         res.status(400).json(e);
