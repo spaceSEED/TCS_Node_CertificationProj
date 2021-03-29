@@ -12,16 +12,17 @@
     <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
 
 </head>
+<%-include ./header.ejs%>
 
-<body>
+<body style="margin: 25px;">
   
         <br>
         <h1 class="text-center display-4">Edit News</h1>
         <hr>
         <br>
 
-        <table id="example" class="display table table-dark table-hover table-shadow" style="width:95%">
-           <thead>
+        <table id="example" class="display table table-dark table-hover shadow-lg" style="width:95%">
+           <thead >
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
@@ -35,10 +36,20 @@
 
                     <tr>
                         <td class="bg-dark"><%= newsItem.title %></td>
-                        <td><%= newsItem.description %></td>
-                        <td><%= newsItem.pub_date %></td>
-                        <td><a href="" class="btn btn-warning">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a></td>
+                        <td class="bg-dark"><%= newsItem.description %></td>
+                        <td class="bg-dark"><%= newsItem.pub_date %></td>
+                        <td class="bg-dark">
+                            <form method="POST" action="http://localhost:3000/edit">
+                                <input type="hidden" name="title" value="<%=newsItem.title%>">
+                                <input type="hidden" name="description" value="<%=newsItem.description%>">
+                                <input type="hidden" name="pub_date" value="<%=newsItem.pub_date%>">
+                                <input type="hidden" name="_id" value="<%=newsItem._id%>">
+                                <input type="hidden" name="url" value="<%=newsItem.url%>">
+                                <input type="hidden" name="img_url" value="<%=newsItem.img_url%>">
+                                <input type="hidden" name="isSports" value="<%=newsItem.isSports%>">
+                                <input type="submit" class="btn btn-warning" value="Edit">
+                            </form>
+                            <a href="/news/delete/<%=newsItem._id%>" class="btn btn-danger">Delete</a></td>
                     </tr>
                     <% }); %>
             </tbody>
@@ -63,4 +74,5 @@
             </script>
 </body>
 
+<%-include ./footer.ejs%>
 </html>

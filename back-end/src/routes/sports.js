@@ -20,7 +20,7 @@ router.post('/', async (req,res,next) =>{
     try {
         const n = new News(o);
         let news = await n.save();
-        res.status(200).send("Success");
+        res.status(200).redirect('/news/all');
     } catch(e) {
         res.status(400).send(e);
     }
