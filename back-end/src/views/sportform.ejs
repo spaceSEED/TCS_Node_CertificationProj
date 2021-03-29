@@ -40,27 +40,13 @@
       async function saveImg(input){
           let photo =input.files[0];
           //console.log(input.files);
-          document.getElementById("img_path").value=photo.name;
-          /*let formData = new FormData();
-     
-            formData.append("photo", photo);
-            //fetch('/upload/img', {method: "POST", body: formData});
-            //formData.forEach((a)=>{
-              //console.log(a);
-            //})
-            $.ajax({
-                url: '/upload/img',
-                type: 'POST',
-                data: formData,
-                async: false,
-                cache: false,
-                contentType: false,
-                enctype: 'multipart/form-data',
-                processData: false,
-                success: function (response) {
-                    alert(response);
-                }
-   });*/
+          let type=photo.name.substring(photo.name.lastIndexOf('.'));
+          if(type=='.jpg'||type=='.png'||type=='.jpeg'){
+            document.getElementById("img_path").value=photo.name;
+          }else{
+            console.log("Wrong filetype");
+            document.getElementById("image-file").value="";
+          }
       }
   </script>
 

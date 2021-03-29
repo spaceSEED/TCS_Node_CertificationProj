@@ -2,7 +2,18 @@ var express = require('express');
 const { render } = require('../app');
 var News = require('../models/news');
 var router = express.Router();
-const auth = require('../middleware/auth')
+const auth = require('../middleware/auth');
+var multer =require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './images/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname );
+    }
+  });
+  var upload=multer({storage:storage});
 
 //returns all normal news
 
@@ -51,10 +62,15 @@ router.get('/delete/:id', auth, async (req, res) => {
 });
 
 //Edit:PUT and Add:POST
-router.post('/', auth, async (req, res) => {
+router.post('/', auth, upload.single('photo'), async (req, res) => {
     if (req.body._method == "PUT") {
-        console.log("PUT");
+        let img=req.body.img_url;
+            if(req.file){
+                //console.log("file uploaded");
+                img="http://localhost:3000/images/"+req.file.originalname;
+            }
         var o = {
+            img_url:img,
             ...req.body
         };
         try {
@@ -64,10 +80,16 @@ router.post('/', auth, async (req, res) => {
             res.status(400).json(e);
         }
     } else {
-        var o = {
-            isSports: false,
-            ...req.body
-        };
+        let img=req.body.img_url;
+            if(req.file){
+                //console.log("file uploaded");
+                img="http://localhost:3000/images/"+req.file.originalname;
+            }
+            var o = {
+                isSports: false,
+                img_url:img,
+                ...req.body
+            };
         try {
             const n = new News(o);
             let news = await n.save();

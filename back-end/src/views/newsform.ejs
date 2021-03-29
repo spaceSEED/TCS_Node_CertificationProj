@@ -23,8 +23,9 @@
         <input type="text" class="form-control" id="title3" name="url" placeholder="Enter URL" value="<%=newsItem.url%>">
       </div>
       <div class="mb-3">
-        <label for="title4" class="form-label">Image URL</label>
-        <input type="text" class="form-control" id="title4" placeholder="Enter image URL"  name="img_url" value="<%=newsItem.img_url%>">
+        <label for="img_path" class="form-label">Image URL</label>
+      <input id="img_path" type="text" class="form-control" name="img_url" value="<%=newsItem.img_url%>">
+      <!--input id="image-file" type="file" name="photo" onchange="saveImg(this)" single-->
       </div>
       <div class="mb-3">
         <label for="title5" class="form-label">Publication Date</label>
@@ -55,8 +56,9 @@
           <input type="text" class="form-control" placeholder="Enter a URL" id="title3" name="url">
         </div>
         <div class="mb-3">
-          <label for="title4" class="form-label">Image URL</label>
-          <input type="text" class="form-control" id="title4" placeholder="Enter image URL" name="img_url">
+          <label for="img_path" class="form-label">Image URL</label>
+          <input id="img_path" type="text" class="form-control" name="img_url">
+          <input id="image-file" type="file" name="photo" onchange="saveImg(this)" single>
         </div>
         <div class="mb-3">
           <label for="title5" class="form-label">Publication Date</label>
@@ -69,7 +71,20 @@
         
       </form>
       <%}%>
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script>
+          async function saveImg(input){
+              let photo =input.files[0];
+              //console.log(input.files);
+              let type=photo.name.substring(photo.name.lastIndexOf('.'));
+              if(type=='.jpg'||type=='.png'||type=='.jpeg'){
+                document.getElementById("img_path").value=photo.name;
+              }else{
+                console.log("Wrong filetype");
+                document.getElementById("image-file").value="";
+              }
+          }
+      </script>
 
         <%-include ./footer.ejs%>
 
