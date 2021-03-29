@@ -22,6 +22,18 @@ router.get('/all', async (req,res,next) =>{
 
 });
 
+router.put('/', async (req,res)=>{
+    var o={
+        ...req.body//assume article type variable;
+    };
+    try{
+        let news= await News.findOne({_id:id}).update(o);
+        res.status(200).json(news);
+    }catch(e){
+        res.status(400).json(e);
+    }
+});
+
 router.delete('/:id',async (req,res)=>{
     let id=req.params.id;
     try{
