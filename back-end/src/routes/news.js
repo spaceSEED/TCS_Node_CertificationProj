@@ -1,11 +1,13 @@
 var express = require('express');
+const { render } = require('../app');
 var News=require('../models/news');
 var router = express.Router();
 
 router.get('/', async (req,res,next) =>{
     try{
         let news= await News.find({isSports:false}).sort({pub_date:-1});
-        res.status(200).json(news);
+        res.render('edit-news', {data: news});
+        //res.status(200).json(news);
     }catch(e){
         res.status(400).json(e);
     }
