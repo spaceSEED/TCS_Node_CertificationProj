@@ -16,9 +16,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/logout', async (req, res) => {
+/**
+ * router.get('/logout', async (req, res) => {
   res.render('logout', { page: 4, token:req.headers.cookie });
-});
+});*/
 
 // GET login //
 router.get('/login', async (req, res) => {
@@ -43,12 +44,12 @@ router.post('/login', async (req, res) => {
 })
 
 // log out GET
-router.get('/logout', async (req, res) => {
+/*router.get('/logout', async (req, res) => {
   res.render('logout', { page:5, token:req.headers.cookie });
-});
+});*/
 
 //log out
-router.post('/logout', auth, async (req, res) => {
+router.get('/logout', auth, async (req, res) => {
   try {
       //removes token from the token array
       req.user.tokens = req.user.tokens.filter((token) => {
@@ -60,7 +61,8 @@ router.post('/logout', auth, async (req, res) => {
 
       await req.user.save();
 
-      res.status(200).clearCookie('Authorization').redirect('/');
+      
+      res.clearCookie('Authorization').render('logout', { page: 1, token:undefined });;
   } catch (err) {
       res.status(400).send(err);
   }

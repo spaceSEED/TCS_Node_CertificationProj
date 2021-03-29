@@ -7,8 +7,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { page:0, token:req.headers.cookie });
 });
 
+/*router.get('/newsform', function(req, res, next) {
+  res.render('newsform', { page:1, token:req.headers.cookie,newsItem:undefined });
+});*/
+
 router.get('/newsform', function(req, res, next) {
-  res.render('newsform', { page:1, token:req.headers.cookie });
+  res.render('newsform', { page:1, token:req.headers.cookie,newsItem:req.body.newsItem });
+});
+
+router.post('/edit', (req,res)=>{
+  newsItem={
+    ...req.body
+  }
+  res.render('newsform', { page:2, token:req.headers.cookie,newsItem:newsItem});
 });
 
 router.get('/edit-news', function(req, res, next) {
