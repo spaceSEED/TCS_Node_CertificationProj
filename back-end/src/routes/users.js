@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
   try {
     await user.save();
     const token = await user.generateAuthToken();
-    res.status(201).cookie('Authorization', token).redirect('/');//.send({user,token});
+    return res.status(201).send({ user, token });
   } catch (err) {
     return res.status(400).send(err);
   }
@@ -18,13 +18,12 @@ router.post('/', async (req, res) => {
 
 // GET login //
 router.get('/login', async (req, res) => {
-  console.log(req.headers.cookie);
-  res.render('login', { page: 5, token:req.headers.cookie });
+  res.render('login', { page: 5 });
 });
 
 // GET signup //
 router.get('/signup', async (req, res) => {
-  res.render('signup', { page: 6, token:req.headers.cookie });
+  res.render('signup', { page: 6 });
 });
 
 /* Login user */
@@ -32,7 +31,7 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password);
     const token = await user.generateAuthToken();
-    res.status(200).cookie('Authorization', token).redirect('/');
+    res.status(200).cookie('Authorization', token).send({ user, token });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -42,19 +41,19 @@ router.post('/login', async (req, res) => {
 //log out
 router.post('/logout', auth, async (req, res) => {
   try {
-      //removes token from the token array
-      req.user.tokens = req.user.tokens.filter((token) => {
+    //removes token from the token array
+    req.user.tokens = req.user.tokens.filter((token) => {
 
-          //walk array of tokens
-          //if token in array not equal to token logging out, keep it
-          return token.token !== req.token;
-      })
+      //walk array of tokens
+      //if token in array not equal to token logging out, keep it
+      return token.token !== req.token
+    })
 
-      await req.user.save();
+    await req.user.save()
 
-      res.status(200).redirect('/');
+    res.status(200).send()
   } catch (err) {
-      res.status(400).send(err);
+    res.status(400).send(err)
   }
 })
 

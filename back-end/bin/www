@@ -26,20 +26,20 @@ var server = http.createServer(app);
  * 
  */
 
- const io = require('socket.io')(server,{
-   cors:{
-     origin:'*'
-   }
- });
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*'
+  }
+});
 
- io.on('connection', (socket) => {
+io.on('connection', (socket) => {
   console.log('New User connected');
 
-  
+
   socket.on('chat', (data) => {
     //console.log(data);
 
-    
+
     let payload = {
       message: data.chatMsg,
       nickName: data.nickName
@@ -49,11 +49,11 @@ var server = http.createServer(app);
     socket.broadcast.emit('newChat', payload);
   });
 
-  socket.on('type',(data)=>{
-      socket.broadcast.emit('typing',{nickName:data.nickName});
+  socket.on('type', (data) => {
+    socket.broadcast.emit('typing', { nickName: data.nickName });
   });
-  socket.on('typeoff',(data)=>{
-      socket.broadcast.emit('typing_off',{nickName:data.nickName});
+  socket.on('typeoff', (data) => {
+    socket.broadcast.emit('typing_off', { nickName: data.nickName });
   });
 });
 
