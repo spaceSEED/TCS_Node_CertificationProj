@@ -6,24 +6,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+        <%if(token){%>
           <li class="nav-item">
             <a class="nav-link <%if(page==1){%>active<%}%>"  href="/newsform">News Form</a><!--aria-current="page"-->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <%if(page==2){%>active<%}%>" href="/edit-news">Edit News</a>
           </li>
           <li class="nav-item">
             <a class="nav-link <%if(page==3){%>active<%}%>"  href="/sportform">Sport Form</a><!--aria-current="page"-->
           </li>
           <li class="nav-item">
+            <a class="nav-link <%if(page==2){%>active<%}%>" href="/news/all">Edit News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%if(page==4){%>active<%}%>" href="/users/logout">Logout</a>
+          </li>
+          <%}else{%>
+          <li class="nav-item">
             <a class="nav-link <%if(page==5){%>active<%}%>" href="/users/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <%if(page==4){%>active<%}%>" href="/logout">Logout</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link <%if(page==6){%>active<%}%>" href="/users/signup">Signup</a>
-          </li>          
+          </li> 
+          <%}%>         
         </ul>
       </div>
     </div>
