@@ -38,6 +38,10 @@ router.post('/login', async (req, res) => {
   }
 })
 
+// log out GET
+router.get('/logout', async (req, res) => {
+  res.render('logout', { page:5, token:req.headers.cookie });
+});
 
 //log out
 router.post('/logout', auth, async (req, res) => {
@@ -51,8 +55,7 @@ router.post('/logout', auth, async (req, res) => {
       })
 
       await req.user.save();
-
-      res.status(200).redirect('/');
+      res.status(200).redirect('/users/login');
   } catch (err) {
       res.status(400).send(err);
   }
