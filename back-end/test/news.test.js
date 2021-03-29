@@ -55,10 +55,10 @@ describe('News', () => {
             });
     });
 
-    it('Should return 400 after deleting non-existing user', (done) => {
+    it('Should return 401 after deleting non-existing user', (done) => {
         request(app).get('/news/delete/1')
             .then((res) => {
-                expect(res).to.have.status(400);
+                expect(res).to.have.status(401);
                 done()
             })
             .catch((err) => done(err));
