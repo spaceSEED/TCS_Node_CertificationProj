@@ -2,9 +2,10 @@
   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <%-include ./header.ejs%>
 <br><br><br>
-  <form method="POST" style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" action="http://localhost:3000/sports">
+  <form method="POST" style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" action="http://localhost:3000/sports" enctype="multipart/form-data">
     <h4 style="font-size: 35px;" class="text-center display-4">Add a Sports Article</h4>
     <hr><br>
+
     <div class="mb-3">
       <label for="title1" class="form-label">Title</label>
       <input type="text" class="form-control" id="title1" name="title">
@@ -18,8 +19,9 @@
       <input type="text" class="form-control" id="title3" name="url">
     </div>
     <div class="mb-3">
-      <label for="title4" class="form-label">Image URL</label>
-      <input type="text" class="form-control" id="title4" name="img_url">
+      <label for="img_path" class="form-label">Image URL</label>
+      <input id="img_path" type="text" class="form-control" name="img_url">
+      <input id="image-file" type="file" name="photo" onchange="saveImg(this)" single>
     </div>
     <div class="mb-3">
       <label for="title5" class="form-label">Publication Date</label>
@@ -33,6 +35,35 @@
   </form>
 
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+      async function saveImg(input){
+          let photo =input.files[0];
+          //console.log(input.files);
+          document.getElementById("img_path").value=photo.name;
+          /*let formData = new FormData();
+     
+            formData.append("photo", photo);
+            //fetch('/upload/img', {method: "POST", body: formData});
+            //formData.forEach((a)=>{
+              //console.log(a);
+            //})
+            $.ajax({
+                url: '/upload/img',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                success: function (response) {
+                    alert(response);
+                }
+   });*/
+      }
+  </script>
+
   <%-include ./footer.ejs%>
 
   <style>
@@ -43,4 +74,4 @@
         height: 100%;
         background: #60a3bc !important;
     }
-    </style>
+</style>
