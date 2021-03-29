@@ -14,15 +14,15 @@
 </head>
 <%-include ./header.ejs%>
 
-    <body style="margin: 25px;">
+    <section style="margin: 25px;">
 
         <br>
         <h1 class="text-center display-4">Edit News</h1>
         <hr>
         <br>
 
-        <table id="example" class="display table table-dark table-hover shadow-lg" style="width:95%">
-            <thead>
+        <table id="example" class="display table table-hover shadow-lg" style="width:95%">
+            <thead class="table-dark">
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
@@ -35,16 +35,16 @@
                 <% data.forEach(function(newsItem) { %>
 
                     <tr>
-                        <td class="bg-dark">
+                        <td >
                             <%= newsItem.title %>
                         </td>
-                        <td class="bg-dark">
+                        <td >
                             <%= newsItem.description %>
                         </td>
-                        <td class="bg-dark">
+                        <td>
                             <%= newsItem.pub_date %>
                         </td>
-                        <td class="bg-dark">
+                        <td>
                             <form method="POST" action="http://localhost:3000/edit">
                                 <input type="hidden" name="title" value="<%=newsItem.title%>">
                                 <input type="hidden" name="description" value="<%=newsItem.description%>">
@@ -61,7 +61,7 @@
                     <% }); %>
             </tbody>
 
-            <tfoot>
+            <tfoot class="table-dark">
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
@@ -70,16 +70,17 @@
                 </tr>
             </tfoot>
         </table>
-        <!-- jquery script to use datatable-->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#example').DataTable();
-            });
-        </script>
-    </body>
+    </section>
+    <!-- jquery script to use datatable-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
 
     <%-include ./footer.ejs%>
 
