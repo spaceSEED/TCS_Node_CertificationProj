@@ -15,8 +15,10 @@
 }
 .article-body{
     justify-content: flex-start;
+    white-space: pre-line;
 }
 
 .article-description{
     font-size: 20px;
 }
+
