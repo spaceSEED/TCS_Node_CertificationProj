@@ -6,30 +6,30 @@ const auth = require('../middleware/auth')
 
 //returns all normal news
 
-router.get('/', async (req,res,next) =>{
-    try{
-        let news= await News.find({isSports:false}).sort({pub_date:-1});
+router.get('/', async (req, res) => {
+    try {
+        let news = await News.find({ isSports: false }).sort({ pub_date: -1 });
         //res.render('edit-news', {page:2,data: news, token:req.headers.cookie });
         res.status(200).json(news);
-    }catch(e){
+    } catch (e) {
         res.status(400).json(e);
     }
 
 });
 
-router.get('/img', async (req,res,next) =>{
-    try{
-        let news= await News.find({isSports:false, img_url:{$exists:true}}).sort({pub_date:-1});
+router.get('/img', async (req, res) => {
+    try {
+        let news = await News.find({ isSports: false, img_url: { $exists: true } }).sort({ pub_date: -1 });
         //res.render('edit-news', {page:2,data: news, token:req.headers.cookie });
         res.status(200).json(news);
-    }catch(e){
+    } catch (e) {
         res.status(400).json(e);
     }
 
 });
 
 //returns all news inc Sports
-router.get('/all', async (req, res, next) => {
+router.get('/all', async (req, res) => {
     try {
         let news = await News.find({}).sort({ pub_date: -1 });
         res.render('edit-news', { page: 2, data: news, token: req.headers.cookie });
@@ -43,7 +43,7 @@ router.get('/all', async (req, res, next) => {
 router.get('/delete/:id', auth, async (req, res) => {
     let id = req.params.id;
     try {
-        await (await News.findOne({ _id: id })).delete();
+        news = await News.findByIdAndDelete(id);
         res.status(200).redirect('/news/all');
     } catch (e) {
         res.status(400).json(e);
@@ -51,8 +51,7 @@ router.get('/delete/:id', auth, async (req, res) => {
 });
 
 //Edit:PUT and Add:POST
-router.post('/', auth, async (req, res, next) => {
-    console.log("recieved");
+router.post('/', auth, async (req, res) => {
     if (req.body._method == "PUT") {
         console.log("PUT");
         var o = {
