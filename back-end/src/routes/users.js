@@ -16,6 +16,10 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/logout', async (req, res) => {
+  res.render('logout', { page: 4, token:req.headers.cookie });
+});
+
 // GET login //
 router.get('/login', async (req, res) => {
   console.log(req.headers.cookie);
@@ -55,7 +59,8 @@ router.post('/logout', auth, async (req, res) => {
       })
 
       await req.user.save();
-      res.status(200).redirect('/users/login');
+
+      res.status(200).clearCookie('Authorization').redirect('/');
   } catch (err) {
       res.status(400).send(err);
   }
