@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsServiceService } from 'src/app/services/news-service.service';
-import { IArticle } from './article';
 import { INews } from './news'
 import { NewsService } from './service/news.service';
 @Component({
@@ -10,18 +8,15 @@ import { NewsService } from './service/news.service';
 })
 export class NewsComponent implements OnInit {
   newsList : INews[] = []
-  article : IArticle= {
-    title: '',
-    author: '',
-    date: '',
-    description: ''
-  }
-  constructor(private serv:NewsServiceService, private newsService : NewsService) { }
+  article : INews;
+  constructor(private serv:NewsService) { }
 
   ngOnInit(): void {
-    this.newsList = this.newsService.getnews()
-    this.article = this.newsService.getArticle()
+    //this.newsList = this.newsService.getnews()
+    //this.article = this.serv.getArticle()
     this.getNews();
+    //this.getArticle(this.newsList[0].url);
+    //this.article=this.newsList[0];
   }
 
   getNews(){
@@ -31,5 +26,10 @@ export class NewsComponent implements OnInit {
       this.newsList[2]=res[2];
     });
   }
+  /*getArticle(url){
+    this.serv.getArticle(url).subscribe((res:any)=>{
+      this.article=res;
+    });
+  }*/
 
 }

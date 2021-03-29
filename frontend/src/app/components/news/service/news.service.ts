@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IArticle } from '../article';
+import { map } from 'rxjs/operators';
+//import { IArticle } from '../article';
 import { INews } from '../news';
 
 @Injectable({
@@ -10,29 +11,14 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getnews(){
-    const data : INews[]= [
-      {
-        title: "title1",
-        pub_date: '12/2/3333',
-        description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k'
-      },
-      {
-        title: "title2",
-        pub_date: '12/2/133',
-        description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa dsadsa'
-      },
-      {
-        title: "title3",
-        pub_date: '12/2/4433',
-        description: 'dajabh ndasjkdnas mdkasldnas mdlksamdsa lkdmasldsa k dsadsa  dsadsa  dsa ds ad sadas'
-      }
-    ]
-    return data
+  getNews(){
+    return this.http.get('http://localhost:3000/news').pipe(map((res:any)=>{
+      return res;
+    }));
   }
 
-  getArticle(){
-    const article : IArticle = {
+  getArticle(url){
+    /*const article : IArticle = {
       title: 'Three Life Lessons From a Dying Man',
       author: 'Aaron Nichols',
       date: 'Dec 24, 2020',
@@ -55,7 +41,10 @@ export class NewsService {
         I had experienced because I had experienced too much to remember. \n\n \
         He inspired me to leave that job and look for something more flexible so that I could go back to school. \
         He inspired me to travel."
-    }
-    return article
+    }*/
+    return this.http.get(url).pipe(map((res:any)=>{
+      return res;
+    }));
+    //return article;
   }
 }

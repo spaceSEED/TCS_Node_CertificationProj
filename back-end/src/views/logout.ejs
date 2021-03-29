@@ -14,27 +14,32 @@
 <body>
 
     <%-include ./header.ejs%>
-    <div class="page-wrap d-flex flex-row align-items-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div style="margin-top: 15%;" class="col-md-12 text-center">
-                    <span class="display-1 d-block">Goodbye!</span>
-                    <div class="mb-4 lead">You have successfully logged out!</div>
-                    <a href="/" class="btn btn-link">Back to Home</a>
+        <div class="page-wrap d-flex flex-row align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div style="margin-top: 15%;" class="col-md-12 text-center">
+                        <span class="display-1 d-block">Goodbye!</span>
+                        <div class="mb-4 lead">You have successfully logged out!</div>
+                        <a href="/" class="btn btn-link">Back to Home</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <%-include ./footer.ejs%>
+        <%-include ./footer.ejs%>
 
-    <style>
-        body {
-            background: #dedede;
-        }
-        .page-wrap {
-            min-height: 50vh;
-        }
-    </style>
+            <style>
+                body,
+                html {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    background: #60a3bc !important;
+                }
+
+                .page-wrap {
+                    min-height: 50vh;
+                }
+            </style>
 </body>
 
 </html>

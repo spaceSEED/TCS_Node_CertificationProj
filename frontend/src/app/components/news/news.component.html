@@ -22,7 +22,7 @@
                 <div class="bg-dark mr-md-3 pt-3  pt-md-5 text-center text-white overflow-hidden">
                     <div class="">
                         <h2 class="display-5">{{news.title}}</h2>
-                        <p class="lead">{{news.pub_date}}</p>
+                        <p class="lead">{{news.pub_date | date:'mediumDate'}}</p>
                     </div>
                     <div class="text-area bg-light box-shadow mx-auto">
                         <p style='color: black;'>{{news.description}}</p>
@@ -32,12 +32,12 @@
         </div>
     </div>
 </div>
-<div class='bg-light'>
+<!--div class='bg-light'>
     <div class='container'>
         <div class='article article-header'>
             <h1>{{article.title}}</h1>
-            <h3>Author: {{article.author}}</h3>
-            <h5>{{article.date}}</h5>
+            <h3>Author: Anonymous</h3>
+            <h5>{{article.pub_date}}</h5>
             <br>
         </div>
         <div class='article article-body'>
@@ -45,4 +45,4 @@
         </div>
     </div>
 
-</div>
+</div-->
