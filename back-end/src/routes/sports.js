@@ -36,7 +36,8 @@ router.post('/', auth, upload.single('photo'), async (req, res, next) => {
         title:req.body.title,
         description:req.body.description,
         pub_date:req.body.pub_date,
-        url:req.body.url
+        url:req.body.url,
+        author:req.body.author
     };
     try {
         const n = new News(o);

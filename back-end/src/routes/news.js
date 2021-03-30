@@ -76,7 +76,8 @@ router.post('/', auth, upload.single('photo'), async (req, res) => {
             pub_date:req.body.pub_date,
             url:req.body.url,
             _id:req.body._id,
-            isSports:req.body.isSports
+            isSports:req.body.isSports,
+            author:req.body.author
         };
         try {
             await News.findOne({ _id: req.body._id }).update(o);
@@ -96,7 +97,8 @@ router.post('/', auth, upload.single('photo'), async (req, res) => {
                 title:req.body.title,
                 description:req.body.description,
                 pub_date:req.body.pub_date,
-                url:req.body.url
+                url:req.body.url,
+                author:req.body.author
             };
         try {
             const n = new News(o);
