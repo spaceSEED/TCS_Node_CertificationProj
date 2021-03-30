@@ -16,11 +16,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 //returns all normal news
-
 router.get('/', async (req, res) => {
     try {
         const news = await News.find({ isSports: false }).sort({ pub_date: -1 });
-        //res.render('edit-news', {page:2,data: news, token:req.headers.cookie });
         res.status(200).send(news);
     } catch (err) {
         res.status(400).send(err);
@@ -30,7 +28,6 @@ router.get('/', async (req, res) => {
 router.get('/img', async (req, res) => {
     try {
         const news = await News.find({ isSports: false, img_url: { $exists: true } }).sort({ pub_date: -1 });
-        //res.render('edit-news', {page:2,data: news, token:req.headers.cookie });
         res.status(200).send(news);
     } catch (err) {
         res.status(400).send(err);
@@ -50,6 +47,7 @@ router.get('/all', async (req, res) => {
 //DELETE
 router.get('/delete/:id', auth, async (req, res) => {
     let id = req.params.id;
+
     try {
         const news = await News.findByIdAndDelete(id);
         res.status(200).redirect('/news/all');
@@ -62,10 +60,12 @@ router.get('/delete/:id', auth, async (req, res) => {
 /* Add News */
 router.post('/add', auth, upload.single('photo'), async (req, res) => {
     let img = req.body.img_url;
+
     if (req.file) {
         //console.log("file uploaded");
         img = "http://localhost:3000/images/" + req.file.originalname;
     }
+
     const newsDao = {
         isSports: false,
         img_url: img,
@@ -75,6 +75,7 @@ router.post('/add', auth, upload.single('photo'), async (req, res) => {
         url: req.body.url,
         author: req.body.author
     };
+
     try {
         const news = new News(newsDao);
         await news.save();
@@ -88,9 +89,9 @@ router.post('/add', auth, upload.single('photo'), async (req, res) => {
 router.post('/edit', auth, upload.single('photo'), async (req, res) => {
     let img = req.body.img_url;
     if (req.file) {
-        //console.log("file uploaded");
         img = "http://localhost:3000/images/" + req.file.originalname;
     }
+
     const news = {
         img_url: img,
         title: req.body.title,
@@ -101,6 +102,7 @@ router.post('/edit', auth, upload.single('photo'), async (req, res) => {
         isSports: req.body.isSports,
         author: req.body.author
     };
+
     try {
         await News.findOne({ _id: req.body._id }).update(news);
         res.status(200).redirect('/news/all');
