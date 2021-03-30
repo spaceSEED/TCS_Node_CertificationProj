@@ -33,7 +33,7 @@ export class GalleryComponent implements OnInit {
       }
     ]
 
-    //this.getImages();
+    this.getImages();
 
   }
 

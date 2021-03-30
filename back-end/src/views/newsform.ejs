@@ -3,8 +3,13 @@
 <%-include ./header.ejs%>
 <br><br><br>
   <%if(newsItem){%>
+<<<<<<< HEAD
     <form style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
       action="http://localhost:3000/news/edit">
+=======
+    <form style="padding: 25px;" id="form" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
+      action="http://localhost:3000/news">
+>>>>>>> cfbe169f787347a05b89c648471c2f50437d2b50
       <h4 style="font-size: 35px;" class="text-center display-4">Edit News</h4>
       <hr><br>
       <input type="hidden" name="isSports" value="<%=newsItem.isSports%>">
@@ -12,15 +17,20 @@
       <input type="hidden" name="_method" value="PUT">
       <div class="mb-3">
         <label for="title1" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title1" name="title" placeholder="Enter a title" value="<%=newsItem.title%>">
+        <input type="text" class="form-control" id="title1" name="title"  value="<%=newsItem.title%>">
+      </div>
+      <div class="mb-3">
+        <label for="ath" class="form-label">Author</label>
+        <input type="text" class="form-control" id="ath" name="author"  value="<%=newsItem.author%>">
       </div>
       <div class="mb-3">
         <label for="title2" class="form-label">Description</label>
-        <input type="text" class="form-control" id="title2" name="description" placeholder="Enter a description" value="<%=newsItem.description%>">
+        <!--input type="text" class="form-control" id="title2" name="description"-->
+        <textarea from="form" class="form-control" id="title2" name="description" ><%=newsItem.description%></textarea>
       </div>
       <div class="mb-3">
         <label for="title3" class="form-label">URL</label>
-        <input type="text" class="form-control" id="title3" name="url" placeholder="Enter URL" value="<%=newsItem.url%>">
+        <input type="text" class="form-control" id="title3" name="url" value="<%=newsItem.url%>">
       </div>
       <div class="mb-3">
         <label for="img_path" class="form-label">Image URL</label>
@@ -38,8 +48,13 @@
       
     </form>
     <%}else{%>
+<<<<<<< HEAD
       <form style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
         action="http://localhost:3000/news/add">
+=======
+      <form style="padding: 25px;" id="form" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
+        action="http://localhost:3000/news">
+>>>>>>> cfbe169f787347a05b89c648471c2f50437d2b50
         <h4 style="font-size: 35px;" class="text-center display-4">Add a News Article</h4>
         <hr><br>
         <input type="hidden" name="_method" value="POST">
@@ -48,8 +63,13 @@
           <input type="text" class="form-control" id="title1" placeholder="Enter a title" name="title">
         </div>
         <div class="mb-3">
+          <label for="ath" class="form-label">Author</label>
+          <input type="text" class="form-control" id="ath" placeholder="Enter an author" name="author">
+        </div>
+        <div class="mb-3">
           <label for="title2" class="form-label">Description</label>
-          <input type="text" class="form-control" id="title2" placeholder="Enter a description" name="description">
+          <!--input type="text" class="form-control" id="title2" name="description"-->
+          <textarea from="form" class="form-control" id="title2" placeholder="Enter a description" name="description"></textarea>
         </div>
         <div class="mb-3">
           <label for="title3" class="form-label">URL</label>

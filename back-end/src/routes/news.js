@@ -25,7 +25,6 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
-
 });
 
 router.get('/img', async (req, res) => {
@@ -36,7 +35,6 @@ router.get('/img', async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
-
 });
 
 //returns all news inc Sports
@@ -47,7 +45,6 @@ router.get('/all', async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
-
 });
 
 //DELETE
@@ -60,6 +57,7 @@ router.get('/delete/:id', auth, async (req, res) => {
         res.status(400).send(err);
     }
 });
+
 
 /* Add News */
 router.post('/add', auth, upload.single('photo'), async (req, res) => {
@@ -75,7 +73,8 @@ router.post('/add', auth, upload.single('photo'), async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         pub_date: req.body.pub_date,
-        url: req.body.url
+        url: req.body.url,
+        author: req.body.author
     };
     try {
         const news = new News(newsDao);
@@ -100,7 +99,8 @@ router.post('/edit', auth, upload.single('photo'), async (req, res) => {
         pub_date: req.body.pub_date,
         url: req.body.url,
         _id: req.body._id,
-        isSports: req.body.isSports
+        isSports: req.body.isSports,
+        author: req.body.author
     };
     try {
         await News.findOne({ _id: req.body._id }).update(news);

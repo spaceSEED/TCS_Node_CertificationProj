@@ -2,7 +2,7 @@
   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <%-include ./header.ejs%>
 <br><br><br>
-  <form method="POST" style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" action="http://localhost:3000/sports" enctype="multipart/form-data">
+  <form method="POST" id="form" style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" action="http://localhost:3000/sports" enctype="multipart/form-data">
     <h4 style="font-size: 35px;" class="text-center display-4">Add a Sports Article</h4>
     <hr><br>
 
@@ -11,8 +11,13 @@
       <input type="text" class="form-control" id="title1" name="title">
     </div>
     <div class="mb-3">
+      <label for="ath" class="form-label">Author</label>
+      <input type="text" class="form-control" id="ath" name="author">
+    </div>
+    <div class="mb-3">
       <label for="title2" class="form-label">Description</label>
-      <input type="text" class="form-control" id="title2" name="description">
+      <!--input type="text" class="form-control" id="title2" name="description"-->
+      <textarea from="form" class="form-control" id="title2" name="description"></textarea>
     </div>
     <div class="mb-3">
       <label for="title3" class="form-label">URL</label>
