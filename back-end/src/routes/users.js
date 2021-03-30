@@ -12,18 +12,18 @@ router.post('/', async (req, res) => {
     const token = await user.generateAuthToken();
     return res.status(201).redirect('/');
   } catch (err) {
-    return res.status(400).send(err);
+    return res.status(400).render('signup', { page: 5, token: undefined, error:true });;
   }
 });
 
 // GET login //
 router.get('/login', async (req, res) => {
-  res.render('login', { page: 5, token: undefined });
+  res.render('login', { page: 5, token: undefined, error:false });
 });
 
 // GET signup //
 router.get('/signup', async (req, res) => {
-  res.render('signup', { page: 6, token: undefined });
+  res.render('signup', { page: 6, token: undefined, error:false });
 });
 
 /* Login user */
@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
     const token = await user.generateAuthToken();
     res.status(200).cookie('Authorization', token).redirect('/');
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).render('login', { page: 5, token: undefined, error:true });;
   }
 })
 
