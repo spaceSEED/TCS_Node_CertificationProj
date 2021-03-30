@@ -71,7 +71,8 @@
             <!--TODO: disable the button if the form is invalid in angular-->
             <button type="submit" class="btn btn-primary" *ngIf="contactForm?.valid">Submit</button>
             <button type="button" disabled class="btn btn-danger" *ngIf="contactForm?.invalid">Submit</button> <br><br>
-            <h4 style="font-size: 30px;" *ngIf="contactForm?.touched && contactForm?.invalid" class="text-center display-4 alert alert-warning"> The form is incomplete! </h4>
+            <!-- NG if has logic for contact form error message -->
+            <h4 style="font-size: 30px;" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid || contactForm.get('email')?.touched && contactForm.get('email')?.invalid || contactForm.get('msg')?.touched && contactForm.get('msg')?.invalid" class="text-center display-4 alert alert-warning"> The form is incomplete! </h4>
         </div>
     </div>
 </form>
