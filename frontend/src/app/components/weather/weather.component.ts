@@ -15,23 +15,23 @@ export class WeatherComponent implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    // if (navigator.geolocation){
-    //   navigator.geolocation.getCurrentPosition((position) =>{
-    //     console.log('getting locaiton')
-    //     this.weatherService.getWeather(position.coords.latitude, position.coords.longitude)
-    //     .subscribe((res:any) => {
-    //       console.log('got data from api')
-    //       this.city = res.timezone
-    //       this.weather = res.current.weather[0].main
-    //       this.weatherIcon = 'http://openweathermap.org/img/w/' + res.current.weather[0].icon +'.png'
-    //       this.temperature = res.current.temp
-    //       console.log('icon:', this.weatherIcon)
-    //     })
-    //   });
-    // }
-    // else{
-    //   console.log('failed to get locaiton')
-    // }
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) =>{
+        console.log('getting locaiton')
+        this.weatherService.getWeather(position.coords.latitude, position.coords.longitude)
+        .subscribe((res:any) => {
+          console.log('got data from api')
+          this.city = res.timezone
+          this.weather = res.current.weather[0].main
+          this.weatherIcon = 'http://openweathermap.org/img/w/' + res.current.weather[0].icon +'.png'
+          this.temperature = res.current.temp
+          console.log('icon:', this.weatherIcon)
+        })
+      });
+    }
+    else{
+      console.log('failed to get locaiton')
+    }
   }
 
 }

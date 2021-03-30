@@ -74,9 +74,9 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <script>
           async function saveImg(input){
-              let photo =input.files[0];
+              let photo =input.files[0].toLowerCase();
               //console.log(input.files);
-              let type=photo.name.substring(photo.name.lastIndexOf('.'));
+              let type=photo.name.substring(photo.name.lastIndexOf('.')).toLowerCase();
               if(type=='.jpg'||type=='.png'||type=='.jpeg'){
                 document.getElementById("img_path").value=photo.name;
               }else{
