@@ -30,35 +30,35 @@ describe('Sports', () => {
         });
     });
 
-    it('should return status 200 for sports page', (done) => {
-        News.insertMany([
-            {
-                title: 'test1',
-                isSports: true
-            },
-            {
-                title: 'test2',
-                isSports: true
-            },
-            {
-                title: 'test3',
-                isSports: false
-            },
-        ])
-        .then(res =>{
-            request(app).get('/sports')
-            .then((res) => {
-                expect(res).to.have.status(200);
-                // console.log(res)
-                done();
-            })
-            .catch((err) => {
-                done(err);
-            });
-        })
-        .catch(err => done(err))
+    // it('should return status 200 for sports page', (done) => {
+    //     News.insertMany([
+    //         {
+    //             title: 'test1',
+    //             isSports: true
+    //         },
+    //         {
+    //             title: 'test2',
+    //             isSports: true
+    //         },
+    //         {
+    //             title: 'test3',
+    //             isSports: false
+    //         },
+    //     ])
+    //     .then(res =>{
+    //         request(app).get('/sports')
+    //         .then((res) => {
+    //             expect(res).to.have.status(200);
+    //             // console.log(res)
+    //             done();
+    //         })
+    //         .catch((err) => {
+    //             done(err);
+    //         });
+    //     })
+    //     .catch(err => done(err))
 
-    });
+    // });
 
 
    
