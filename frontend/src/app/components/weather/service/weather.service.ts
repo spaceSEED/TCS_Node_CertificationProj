@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../../../environments/environment'
 
@@ -11,13 +11,15 @@ const appid = environment.key
 })
 export class WeatherService {
   constructor(private http: HttpClient) { }
-  getWeather(lat: number, long : number) : Observable<any>{
-    console.log(lat, long)
-    return this.http.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${appid}&units=imperial`)
+  getWeather(city: string) : Observable<any>{
+    console.log(city)
+    // let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${appid}&units=imperial`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${appid}&cnt=5`
+    return this.http.get(url)
       .pipe(map((res:any) => {
-        console.log(res);
-        // sort, filter, modify data
+        console.log('here')
         return res;
       }));
+    
   }
 }
