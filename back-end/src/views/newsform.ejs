@@ -3,13 +3,9 @@
 <%-include ./header.ejs%>
 <br><br><br>
   <%if(newsItem){%>
-<<<<<<< HEAD
-    <form style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
-      action="http://localhost:3000/news/edit">
-=======
+
     <form style="padding: 25px;" id="form" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
-      action="http://localhost:3000/news">
->>>>>>> cfbe169f787347a05b89c648471c2f50437d2b50
+      action="http://localhost:3000/news/edit">
       <h4 style="font-size: 35px;" class="text-center display-4">Edit News</h4>
       <hr><br>
       <input type="hidden" name="isSports" value="<%=newsItem.isSports%>">
@@ -48,13 +44,9 @@
       
     </form>
     <%}else{%>
-<<<<<<< HEAD
-      <form style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
-        action="http://localhost:3000/news/add">
-=======
+
       <form style="padding: 25px;" id="form" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" method="POST"
-        action="http://localhost:3000/news">
->>>>>>> cfbe169f787347a05b89c648471c2f50437d2b50
+        action="http://localhost:3000/news/add">
         <h4 style="font-size: 35px;" class="text-center display-4">Add a News Article</h4>
         <hr><br>
         <input type="hidden" name="_method" value="POST">
