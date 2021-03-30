@@ -39,9 +39,13 @@ export class GalleryComponent implements OnInit {
 
   getImages(){
     this.serv.getImages().subscribe((res:any)=>{
+      //console.log(res);
       this.imgList[0]={active:true, title:res[0].title, img_url:res[0].img_url, description:res[0].description};
+      //console.log(res[0].img_url);
       this.imgList[1]={active:false, title:res[1].title, img_url:res[1].img_url, description:res[1].description};
+      //console.log(res[1].img_url);
       this.imgList[2]={active:false, title:res[2].title, img_url:res[2].img_url, description:res[2].description};
+      //console.log(res[2].img_url);
     });
   }
 }

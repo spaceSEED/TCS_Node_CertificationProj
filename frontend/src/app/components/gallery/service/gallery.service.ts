@@ -10,9 +10,8 @@ export class GalleryService {
 
   constructor(private http: HttpClient) { }
 
-  getImages() : Observable<any>{
-    return this.http.get('http://localhost:3000/news/img')
-      .pipe(map((res:any) => {
+  getImages(){
+    return this.http.get('http://localhost:3000/news/img').pipe(map((res:any) => {
         //console.log(res);
         // sort, filter, modify data
         return res;
