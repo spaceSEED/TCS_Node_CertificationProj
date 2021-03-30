@@ -56,14 +56,15 @@
                             <div class="text-center">
                                 <button class="btn btn-primary shadow-lg" type="submit">Login</button>
                             </div>
-                            <%if(error){%>
-                            <div class="alert alert-danger" role="alert">
-                                    There was a problem with your credentials
-                            </div>
-                            <%}%>
+                            
 
                         </form>
                     </div>
+                    <%if(error){%>
+                        <div class="alert alert-danger" role="alert">
+                                There was a problem with your credentials
+                        </div>
+                        <%}%>
 
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
