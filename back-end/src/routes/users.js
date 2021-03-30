@@ -1,7 +1,7 @@
-var express = require('express');
+const express = require('express');
 const User = require('../models/user')
 const auth = require('../middleware/auth')
-var router = express.Router();
+const router = express.Router();
 
 /* Post user to DB */
 router.post('/', async (req, res) => {
@@ -15,11 +15,6 @@ router.post('/', async (req, res) => {
     return res.status(400).send(err);
   }
 });
-
-/**
- * router.get('/logout', async (req, res) => {
-  res.render('logout', { page: 4, token:req.headers.cookie });
-});*/
 
 // GET login //
 router.get('/login', async (req, res) => {
@@ -41,11 +36,6 @@ router.post('/login', async (req, res) => {
     res.status(500).send(err);
   }
 })
-
-// log out GET
-/*router.get('/logout', async (req, res) => {
-  res.render('logout', { page:5, token:req.headers.cookie });
-});*/
 
 //log out
 router.get('/logout', auth, async (req, res) => {
