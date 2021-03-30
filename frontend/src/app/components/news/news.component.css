@@ -22,3 +22,6 @@
     font-size: 20px;
 }
 
+.trending-news:hover{
+    border: 1px solid black;
+}

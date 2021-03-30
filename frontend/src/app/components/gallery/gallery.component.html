@@ -8,7 +8,7 @@
     <div class="carousel-item" *ngFor='let img of imgList' [ngClass]="img.active ? 'active' : ''"> 
       <img src={{img.img_url}} class="d-block w-100">
       <div class="carousel-caption d-none d-md-block">
-        <h5>{{img.title}}</h5>
+        <h1>{{img.title}}</h1>
         <p>{{img.description}}</p>
       </div>
     </div>

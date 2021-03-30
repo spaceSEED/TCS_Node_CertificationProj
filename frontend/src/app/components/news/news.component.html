@@ -18,9 +18,9 @@
                       <p class="lead">And an even wittier subheading.</p>
                     </div>
                 </div> -->
-            <div class="">
-                <div class="bg-dark mr-md-3 pt-3  pt-md-5 text-center text-white overflow-hidden">
-                    <div class="">
+            <div class="trending-news" (click)="redirectToNews(news.url)">
+                <div class="bg-dark pt-md-5 text-center text-white overflow-hidden">
+                    <div class="title-area">
                         <h2 class="display-5">{{news.title}}</h2>
                         <p class="lead">{{news.pub_date | date:'mediumDate'}}</p>
                     </div>

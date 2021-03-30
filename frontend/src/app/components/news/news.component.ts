@@ -28,6 +28,11 @@ export class NewsComponent implements OnInit {
       this.article=this.newsList[0];
     });
   }
+
+  redirectToNews(url: string){
+    console.log(url)
+    window.open(url, "_blank")
+  }
   /*getArticle(url){
     this.serv.getArticle(url).subscribe((res:any)=>{
       this.article=res;
