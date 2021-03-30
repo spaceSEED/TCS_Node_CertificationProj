@@ -1,8 +1,8 @@
-var express = require('express');
-var News = require('../models/news');
-var router = express.Router();
+const express = require('express');
+const News = require('../models/news');
+const router = express.Router();
 const auth = require('../middleware/auth')
-var multer = require('multer');
+const multer = require('multer');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -14,23 +14,22 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     try {
-        let news = await News.find({ isSports: true }).sort({ pub_date: -1 });
-        res.json(news);
-    } catch (e) {
-        res.status(400).send(e);
+        const news = await News.find({ isSports: true }).sort({ pub_date: -1 });
+        res.send(news);
+    } catch (err) {
+        res.status(400).send(err);
     }
 
 });
 
-router.post('/', auth, upload.single('photo'), async (req, res, next) => {
-    let img = req.body.img_url;
+router.post('/', auth, upload.single('photo'), async (req, res) => {
+    var img = req.body.img_url;
     if (req.file) {
-        //console.log("file uploaded");
         img = "http://localhost:3000/images/" + req.file.originalname;
     }
-    var o = {
+    const newsDao = {
         isSports: true,
         img_url:img,
         title:req.body.title,
@@ -40,11 +39,11 @@ router.post('/', auth, upload.single('photo'), async (req, res, next) => {
         author:req.body.author
     };
     try {
-        const n = new News(o);
-        let news = await n.save();
+        const news = new News(newsDao);
+        await news.save();
         res.status(200).redirect('/news/all');
-    } catch (e) {
-        res.status(400).send(e);
+    } catch (err) {
+        res.status(400).send(err);
     }
 });
 

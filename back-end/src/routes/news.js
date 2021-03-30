@@ -1,5 +1,4 @@
 const express = require('express');
-const { render } = require('../app');
 const News = require('../models/news');
 const router = express.Router();
 const auth = require('../middleware/auth');
@@ -13,6 +12,7 @@ var storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
+
 var upload = multer({ storage: storage });
 
 //returns all normal news
@@ -61,7 +61,6 @@ router.get('/delete/:id', auth, async (req, res) => {
 
 /* Add News */
 router.post('/add', auth, upload.single('photo'), async (req, res) => {
-
     let img = req.body.img_url;
     if (req.file) {
         //console.log("file uploaded");
