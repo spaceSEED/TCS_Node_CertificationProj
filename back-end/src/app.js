@@ -12,6 +12,7 @@ var newsRouter = require('./routes/news');
 var sportsRouter = require('./routes/sports');
 require('./db/mongoose')
 
+
 var app = express();
 
 //CORS ["http://localhost:3000","http://localhost:4200"]
@@ -28,17 +29,23 @@ app.use(cors({origin:true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//FOR UPLOADING+++
+var multer =require('multer');
+//var upload=multer({ dest: '../images/' });
+//app.use(upload.array());
+//++++++++++++++++
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static('images'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/news',newsRouter);
 app.use('/sports',sportsRouter);
-
 
 
 // catch 404 and forward to error handler

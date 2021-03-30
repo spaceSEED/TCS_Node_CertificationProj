@@ -24,6 +24,8 @@ export class NewsComponent implements OnInit {
       this.newsList[0]=res[0];
       this.newsList[1]=res[1];
       this.newsList[2]=res[2];
+
+      this.article=this.newsList[0];
     });
   }
   /*getArticle(url){
