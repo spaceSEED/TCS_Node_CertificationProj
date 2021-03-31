@@ -1,0 +1,5 @@
+1. Chat window does not display message.
+    Nickname: Boop
+    Message: "I like chickens."
+2. Weather search cannot distinguish between towns/cities that do not have unique names.
+    City: Luling -- There exists one in Louisiana and one in Texas. Likewise, there is a Paris, France and Paris, Texas
