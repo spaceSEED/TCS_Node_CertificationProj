@@ -1,9 +1,8 @@
-<body style="background-color: rgb(226, 226, 226);">
+<body *ngIf="!isSaved; else sent" style="background-color: rgb(226, 226, 226);">
 <br>
 <h1 class='text-center display-4'> Contact Us </h1>
 <hr>
 <br>
-
 
 <!-- Step #3: batch up form tag with the ts equivalent -->
 <form style="padding: 25px;" class=" bg-light col-md-6 offset-md-3 shadow-lg rounded" [formGroup]="contactForm" method="POST" action="" (ngSubmit)="handleContactForm()">
@@ -76,7 +75,28 @@
         </div>
     </div>
 </form>
-
 <br><br><br>
-
 </body>
+<ng-template #sent>
+    <body style="margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #60bc6c !important;">
+    <div class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div style="margin-top: 15%;" class="col-md-12 text-center">
+                    <span class="display-1 d-block">Mail has been sent!</span>
+                    <a href="/" class="btn btn-link">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <style>
+            /*.page-wrap {
+                min-height: 50vh;
+            }*/
+        </style>
+        </body>
+    </ng-template>
