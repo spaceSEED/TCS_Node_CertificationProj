@@ -73,13 +73,18 @@ router.post('/add', auth, upload.single('photo'), async (req, res) => {
     if(auth==""){
         auth=undefined;
     }
+
+    var date=req.body.pub_date;
+    if(date==""){
+        date=undefined;
+    }
 //console.log(img);
     const newsDao = {
         isSports: false,
         img_url: img,
         title: req.body.title,
         description: req.body.description,
-        pub_date: req.body.pub_date,
+        pub_date: date,
         url: req.body.url,
         author: auth
     };
@@ -107,11 +112,16 @@ router.post('/edit', auth, upload.single('photo'), async (req, res) => {
         auth=undefined;
     }
 
+    var date=req.body.pub_date;
+    if(date==""){
+        date=undefined;
+    }
+
     const news = {
         img_url: img,
         title: req.body.title,
         description: req.body.description,
-        pub_date: req.body.pub_date,
+        pub_date: date,
         url: req.body.url,
         _id: req.body._id,
         isSports: req.body.isSports,
