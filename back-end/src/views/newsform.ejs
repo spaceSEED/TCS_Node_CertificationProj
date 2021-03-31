@@ -40,8 +40,8 @@
       <input id="image-file" type="file" name="photo" onchange="saveImg(this)" single>
       </div>
       <div class="mb-3">
-        <label for="title5" class="form-label">Publication Date</label>
-        <input type="date" class="form-control" id="title5" name="pub_date" <%if(newsItem){%>value="<%=newsItem.pub_date%>"<%}%>>
+        <label for="date" class="form-label">Publication Date</label>
+        <input type="date" class="form-control" id="date" name="pub_date" <%if(newsItem){%>value="<%=new Date(newsItem.pub_date.toString()).toISOString().split('T')[0]%>"<%}%>>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary"><%if(newsItem){%>Save Changes<%}else{%>Submit<%}%></button>
