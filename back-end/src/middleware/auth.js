@@ -15,8 +15,10 @@ const auth = async (req, res, next) => {
          throw new Error();
       }
 
+      // set fields on req object to keep track of which user / token is loggedin
       req.token = token;
       req.user = user;
+      
       next();
    } catch (err) {
       res.status(401).send({ error: 'Please authenticate.' });
