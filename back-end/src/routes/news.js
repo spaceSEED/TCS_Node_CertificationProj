@@ -59,13 +59,21 @@ router.get('/delete/:id', auth, async (req, res) => {
 
 /* Add News */
 router.post('/add', auth, upload.single('photo'), async (req, res) => {
-    let img = req.body.img_url;
-
-    if (req.file) {
+    var img = req.body.img_url;
+    //console.log(req.file);
+    if(req.file){
         //console.log("file uploaded");
         img = "http://localhost:3000/images/" + req.file.originalname;
+        //console.log(img);
+    }else if(img==""){
+        img=undefined;
     }
 
+    var auth=req.body.author;
+    if(auth==""){
+        auth=undefined;
+    }
+//console.log(img);
     const newsDao = {
         isSports: false,
         img_url: img,
@@ -73,7 +81,7 @@ router.post('/add', auth, upload.single('photo'), async (req, res) => {
         description: req.body.description,
         pub_date: req.body.pub_date,
         url: req.body.url,
-        author: req.body.author
+        author: auth
     };
 
     try {
@@ -87,9 +95,16 @@ router.post('/add', auth, upload.single('photo'), async (req, res) => {
 
 /* Edit News */
 router.post('/edit', auth, upload.single('photo'), async (req, res) => {
-    let img = req.body.img_url;
+    var img = req.body.img_url;
     if (req.file) {
         img = "http://localhost:3000/images/" + req.file.originalname;
+    }else if(img==""){
+        img=undefined;
+    }
+
+    var auth=req.body.author;
+    if(auth==""){
+        auth=undefined;
     }
 
     const news = {
@@ -100,7 +115,7 @@ router.post('/edit', auth, upload.single('photo'), async (req, res) => {
         url: req.body.url,
         _id: req.body._id,
         isSports: req.body.isSports,
-        author: req.body.author
+        author: auth
     };
 
     try {

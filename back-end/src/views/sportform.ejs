@@ -8,7 +8,7 @@
 
     <div class="mb-3">
       <label for="title1" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title1" name="title">
+      <input type="text" class="form-control" id="title1" name="title" required>
     </div>
     <div class="mb-3">
       <label for="ath" class="form-label">Author</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
       <label for="title3" class="form-label">URL</label>
-      <input type="text" class="form-control" id="title3" name="url">
+      <input type="text" class="form-control" id="title3" name="url" required>
     </div>
     <div class="mb-3">
       <label for="img_path" class="form-label">Image URL</label>
@@ -43,7 +43,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script>
       async function saveImg(input){
-          let photo =input.files[0].toLowerCase();
+          let photo =input.files[0];
           //console.log(input.files);
           let type=photo.name.substring(photo.name.lastIndexOf('.')).toLowerCase();
           if(type=='.jpg'||type=='.png'||type=='.jpeg'){

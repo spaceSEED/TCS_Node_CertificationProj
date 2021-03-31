@@ -28,7 +28,15 @@ router.post('/', auth, upload.single('photo'), async (req, res) => {
     var img = req.body.img_url;
     if (req.file) {
         img = "http://localhost:3000/images/" + req.file.originalname;
+    }else if(img==""){
+        img=undefined;
     }
+
+    var auth=req.body.author;
+    if(auth==""){
+        auth=undefined;
+    }
+
     const newsDao = {
         isSports: true,
         img_url:img,
@@ -36,7 +44,7 @@ router.post('/', auth, upload.single('photo'), async (req, res) => {
         description:req.body.description,
         pub_date:req.body.pub_date,
         url:req.body.url,
-        author:req.body.author
+        author:auth
     };
     try {
         const news = new News(newsDao);
