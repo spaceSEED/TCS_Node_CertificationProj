@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 
-
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -28,11 +27,11 @@ export class ContactComponent implements OnInit {
    }
 
   ngOnInit(): void {
+      
   }
 
   handleContactForm() {
-    console.log(this.contactForm); // reactive form state
-
+    window.location.href = 'http://localhost:3000/sendmail';
     // send above data to the service
     // get the res from the service
     // upon getting successful status display the 
