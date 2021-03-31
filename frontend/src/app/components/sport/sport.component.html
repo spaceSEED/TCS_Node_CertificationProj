@@ -15,8 +15,8 @@
             <div class="card">
                 <img src={{data.img_url}} class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{data.title}}</h5>
-                    <p class="card-text">{{data.description}}</p>
+                    <h5 class="card-title">{{data.title|trunc : 100}}</h5>
+                    <p class="card-text">{{data.description|trunc : 300}}</p>
                 </div>
             </div>
         </div>

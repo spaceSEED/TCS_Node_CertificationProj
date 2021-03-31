@@ -15,6 +15,7 @@ import { HomeComponent } from './components/homeComponents/home/home.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { Truncate } from './shared/pipes/trunc.pipe';
 
 const config: SocketIoConfig={url:'ws://localhost:3000',options:{}};
 
@@ -30,7 +31,8 @@ const config: SocketIoConfig={url:'ws://localhost:3000',options:{}};
     SportComponent,
     AboutComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    Truncate
   ],
   imports: [
     BrowserModule,
