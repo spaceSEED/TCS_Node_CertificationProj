@@ -10,18 +10,22 @@ let transport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
     auth: {
-      user: 'ammaressajee@gmail.com',
-      pass: 'zoo=2582924'
+      user: 'nodeangularcert@gmail.com',
+      pass: 'Tcs1234567'
     }
   });
   
   router.post('/', (req, res) => {
+    var data = req.body.name;
+    console.log(data);
     const message = {
-      from: 'user@example.com', // Sender address
-      to: 'ammaressajee@gmail.com', // List of recipients
+      from: req.body.email, // Sender address
+      to: 'nodeangularcert@gmail.com', // List of recipients
       subject: 'User Query', // Subject line
-      text: 'your message has been sent!' // Plain text body
+      text: `Name: ${req.body.name}
+Message: ${req.body.msg}` // Plain text body
     };
+
   
     transport.sendMail(message, function (err, info) {
       if (err) {
@@ -31,7 +35,6 @@ let transport = nodemailer.createTransport({
       }
     });
   
-    //res.render('mail', { page: 5, token: req.headers.cookie });
     res.status(200).send();
   });
 
