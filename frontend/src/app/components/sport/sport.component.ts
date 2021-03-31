@@ -18,7 +18,7 @@ export class SportComponent implements OnInit {
     });
   }
 
-  redirect(){
-    window.open("https://www.foxnews.com/sports", "_blank")
+  redirect(url){
+    window.open(url, "_blank")
   }
 }

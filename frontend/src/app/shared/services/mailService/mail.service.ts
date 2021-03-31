@@ -12,7 +12,6 @@ export class MailService {
   constructor(private http: HttpClient) { }
 
   sendMail(contact:any){
-
-    this.http.post('http://localhost:3000/sendmail',contact).subscribe();
+    this.http.post('http://localhost:3000/sendmail', contact).subscribe();
   }
 }
