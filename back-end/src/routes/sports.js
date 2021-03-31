@@ -37,12 +37,18 @@ router.post('/', auth, upload.single('photo'), async (req, res) => {
         auth=undefined;
     }
 
+    var date=req.body.pub_date;
+    if(date==""){
+        date=undefined;
+    }
+
+
     const newsDao = {
         isSports: true,
         img_url:img,
         title:req.body.title,
         description:req.body.description,
-        pub_date:req.body.pub_date,
+        pub_date:date,
         url:req.body.url,
         author:auth
     };
