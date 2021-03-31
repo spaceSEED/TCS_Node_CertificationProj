@@ -8,7 +8,7 @@ const News = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+        default: "There is no description."
     },
     url: {
         type: String,
