@@ -54,6 +54,7 @@ describe('Sports', () => {
 
     })
 
+    // view add sports page
     it('should return status 200 for sports page', (done) => {
         request(app).get('/sports')
             .end((err, res) => {
@@ -62,6 +63,7 @@ describe('Sports', () => {
             })
     })
 
+    // post sport news
     it('should return status 302 for posting sport news', (done) => {
         authenticatedUser.post('/sports')
             .send({
@@ -79,6 +81,7 @@ describe('Sports', () => {
             })
     })
 
+    // post invalid sport news
     it('should return status 400 for posting sport news with missing parameters', (done) => {
         authenticatedUser.post('/sports')
             .send({

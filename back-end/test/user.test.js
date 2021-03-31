@@ -28,7 +28,7 @@ describe('users', () => {
 
     // disconnect from db
     after((done) => {
-        // mongoose.connection.db.collection('users').deleteMany({})
+        mongoose.connection.db.collection('users').deleteMany({})
         conn.close()
         .then(() => {
             done()
