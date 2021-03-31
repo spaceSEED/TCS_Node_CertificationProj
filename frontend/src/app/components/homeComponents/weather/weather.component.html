@@ -1,8 +1,10 @@
 <div class="card text-center">
   <div class="">
-    <h3>Search Weather</h3>
+    <br>
+    <h3 class="display-4">Search Weather</h3>
+    <hr><br>
     <form [formGroup]="selectLocationForm" (ngSubmit)="searchLocation()">
-      <input name='city' formControlName='city' placeholder="city">
+      <input name='city' formControlName='city' placeholder="Enter City">
       <button type="submit" class="btn btn-primary" [disabled]="selectLocationForm.invalid">Submit</button>
     </form>
   </div>
@@ -19,7 +21,7 @@
       </div>
     </div>
     <div *ngIf="apiRetrieved==false">
-      <h2>{{msg}}</h2>
+      <h2 style="font-size: 25px;" class="display-4">{{msg}}!</h2><hr>
     </div>
   </div>
 
