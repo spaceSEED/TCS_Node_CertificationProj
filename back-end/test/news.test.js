@@ -24,6 +24,8 @@ describe('News', () => {
     before((done) => {
         conn.connect()
         .then(() => {
+            mongoose.connection.db.collection('news').deleteMany({})
+            mongoose.connection.db.collection('users').deleteMany({})
             // create user
             userDao.save()
             .then(() => {
@@ -43,16 +45,15 @@ describe('News', () => {
 
     // disconnect from db
     after((done) => {
-        userDao.remove({name: 'admin'})
+        
+        mongoose.connection.db.collection('news').deleteMany({})
+        mongoose.connection.db.collection('users').deleteMany({})
+        conn.close()
         .then(() => {
-            mongoose.connection.db.collection('news').deleteMany({})
-            conn.close()
-            .then(() => {
-                done()
-            })
-            .catch((err) => console.log(err));
+            done()
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
+
     })
 
     // view news

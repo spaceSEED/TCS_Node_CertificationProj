@@ -18,6 +18,7 @@
 //     before((done) => {
 //         conn.connect()
 //         .then(() => {
+//             mongoose.connection.db.collection('users').deleteMany({})
 //             done()
 //         })
 //         .catch((err) => console.log(err));
@@ -25,7 +26,7 @@
 
 //     // disconnect from db
 //     after((done) => {
-//         // mongoose.connection.db.dropDatabase('users')
+//         // mongoose.connection.db.collection('users').deleteMany({})
 //         conn.close()
 //         .then(() => {
 //             done()
@@ -35,7 +36,7 @@
 
 //     // view singup
 //     it('should return status 200 for signup page', (done) => {
-//         request(app).get('/news/signup')
+//         request(app).get('/users/signup')
 //             .then((res) => {
 //                 expect(res).to.have.status(200);
 //                 done()
@@ -47,15 +48,48 @@
 
 //     // view login
 //     it('should return status 200 for login page', (done) => {
-//         request(app).get('/news/login')
+//         request(app).get('/users/login')
 //             .then((res) => {
 //                 expect(res).to.have.status(200);
+//                 done()
+//             })
+//             .catch((err) => {
+//                 console.log(err)
+//                 done(err)
+//             });
+//     });
+
+//     // signup
+//     it('should return status 302 for signing up', (done) => {
+//         request(app).post('/users')
+//             .send({
+//                 name: 'admin',
+//                 email: 'admin@gmail.com',
+//                 password: '1234567'
+//             })
+//             .then((res) => {
+//                 expect(res).to.have.status(302);
 //                 done()
 //             })
 //             .catch((err) => {
 //                 done(err)
 //             });
 //     });
-   
+
+//     // login
+//     it('should return status 302 for logging in successfully', (done) => {
+//         request(app).post('/users/login')
+//             .send({
+//                 email: 'admin@gmail.com',
+//                 password: '1234567'
+//             })
+//             .then((res) => {
+//                 expect(res).to.have.status(302);
+//                 done()
+//             })
+//             .catch((err) => {
+//                 done(err)
+//             });
+//     });
 
 // })
