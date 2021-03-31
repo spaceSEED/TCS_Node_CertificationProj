@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IGallery } from './gallery'
-import { GalleryService } from './service/gallery.service';
+import { GalleryService } from '../../../shared/services/galleryService/gallery.service';
 
 @Component({
   selector: 'app-gallery',

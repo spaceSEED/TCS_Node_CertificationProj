@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 //import { IArticle } from '../article';
-import { INews } from '../news';
+import { INews } from '../../../components/homeComponents/news/news';
 
 @Injectable({
   providedIn: 'root'

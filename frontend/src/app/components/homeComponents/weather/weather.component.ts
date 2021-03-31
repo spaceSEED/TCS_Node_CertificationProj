@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { WeatherService } from './service/weather.service';
+import { WeatherService } from '../../../shared/services/weatherService/weather.service';
 import { IWeather } from './weather';
 
 @Component({
