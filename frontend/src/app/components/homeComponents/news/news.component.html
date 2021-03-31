@@ -21,7 +21,7 @@
             <div class="trending-news shadow-lg rounded" (click)="redirectToNews(news.url)">
                 <div class="bg-dark pt-md-5 text-center text-white overflow-hidden">
                     <div class="title-area">
-                        <h2 class="display-5">{{news.title|trunc : 100}}</h2>
+                        <h2 class="display-5">{{news.title|trunc : 70}}</h2>
                         <p class="lead">{{news.pub_date | date:'mediumDate'}}</p>
                     </div><br>
                     <div class="text-area bg-light box-shadow mx-auto">
