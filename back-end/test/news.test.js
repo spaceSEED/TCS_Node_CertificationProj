@@ -45,8 +45,7 @@ describe('News', () => {
     after((done) => {
         userDao.remove({name: 'admin'})
         .then(() => {
-            mongoose.connection.db.dropDatabase('news')
-            mongoose.connection.db.dropDatabase('users')
+            mongoose.connection.db.collection('news').deleteMany({})
             conn.close()
             .then(() => {
                 done()
