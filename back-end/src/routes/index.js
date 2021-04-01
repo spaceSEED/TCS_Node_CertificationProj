@@ -4,7 +4,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 
 /* GET home page. */
-router.get('/', auth, function (req, res) {
+router.get('/', function (req, res) {
   res.render('index', { page: 0, token: req.headers.cookie });
 });
 
@@ -27,7 +27,7 @@ router.get('/sportform', auth, function (req, res) {
   res.render('sportform', { page: 3, token: req.headers.cookie });
 });
 
-router.get('/chat', auth, function (req, res) {
+router.get('/chat', function (req, res) {
   res.render('chat', { title: 'Chat' });
 });
 
