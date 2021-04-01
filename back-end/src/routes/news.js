@@ -18,7 +18,7 @@ var upload = multer({ storage: storage });
 //returns all normal news
 router.get('/', async (req, res) => {
     try {
-        const news = await News.find({ isSports: false }).sort({ pub_date: -1 });
+        const news = await News.find({ isSports: false }).sort({ pub_date: -1 }).limit(3);
         res.status(200).send(news);
     } catch (err) {
         res.status(400).send(err);
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 
 router.get('/img', async (req, res) => {
     try {
-        const news = await News.find({ isSports: false, img_url: { $exists: true } }).sort({ pub_date: -1 });
+        const news = await News.find({ isSports: false, img_url: { $exists: true } }).sort({ pub_date: -1 }).limit(3);
         res.status(200).send(news);
     } catch (err) {
         res.status(400).send(err);

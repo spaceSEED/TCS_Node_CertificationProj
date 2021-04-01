@@ -14,7 +14,7 @@ var mailRouter = require('./routes/email');
 require('./db/mongoose');
 
 // body parser and nodemailer for email implementation
-var nodemailer = require('nodemailer');
+//var nodemailer = require('nodemailer');
 
 var app = express();
 
