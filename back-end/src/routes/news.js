@@ -35,7 +35,7 @@ router.get('/img', async (req, res) => {
 });
 
 //returns all news inc Sports
-router.get('/all', async (req, res) => {
+router.get('/all', auth, async (req, res) => {
     try {
         let news = await News.find({}).sort({ pub_date: -1 });
         res.render('edit-news', { page: 2, data: news, token: req.headers.cookie });

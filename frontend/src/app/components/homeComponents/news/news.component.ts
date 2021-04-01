@@ -21,10 +21,12 @@ export class NewsComponent implements OnInit {
 
   getNews(){
     this.serv.getNews().subscribe((res:any)=>{
-      this.newsList[0]=res[0];
+      /*this.newsList[0]=res[0];
       this.newsList[1]=res[1];
-      this.newsList[2]=res[2];
+      this.newsList[2]=res[2];*/
+      
 
+      this.newsList=res;
       this.article=this.newsList[0];
     });
   }
