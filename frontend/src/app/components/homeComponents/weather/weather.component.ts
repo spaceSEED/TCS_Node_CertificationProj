@@ -63,9 +63,12 @@ export class WeatherComponent implements OnInit {
           console.log(obj.icon)
           this.weathers.push(obj)
         }
+        this.city = res.city.name + ", " + res.city.country
+        this.msg = ''
         this.apiRetrieved = true
       }, (err: HttpErrorResponse) => {
         this.apiRetrieved = false
+        this.city = ''
         this.msg = 'Please enter a valid city'
       })
     

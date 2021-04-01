@@ -36,3 +36,17 @@ form > input{
     align-items: center;
     flex-direction: column;
 }
+
+.container-fluid{
+    max-width: 1200px;
+}
+.row{
+    min-height: 300px;
+}
+
+.sec-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
